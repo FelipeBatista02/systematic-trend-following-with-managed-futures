@@ -1,0 +1,9 @@
+symbols:
+  - {symbol: ES, sector: Equities, point_value: 50}
+  - {symbol: NQ, sector: Equities, point_value: 20}
+  - {symbol: ZN, sector: Rates, point_value: 1000}
+  - {symbol: ZB, sector: Rates, point_value: 1000}
+  - {symbol: CL, sector: Commodities, point_value: 1000}
+  - {symbol: GC, sector: Commodities, point_value: 100}
+  - {symbol: 6E, sector: FX, point_value: 125000}
+  - {symbol: 6J, sector: FX, point_value: 125000}
