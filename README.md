@@ -78,6 +78,50 @@ Additional user guides live under `docs/`:
 
 The top-level `README` pairs with `SPEC.md` for a condensed architectural overview.
 
+## Architecture overview
+
+```mermaid
+flowchart TD
+    subgraph DataLayer[Data & Calendars]
+        vendors["Raw Vendors / Local Files"]
+        ingest["Ingestion, Validation, Calendars"]
+        store["Research-Ready Prices"]
+        vendors --> ingest --> store
+    end
+
+    subgraph ResearchLayer[Signals & Risk]
+        signals["Signal Library (Momentum / MA / Breakout)"]
+        risk["Risk & Allocation"]
+        ResearchContext["Universe & Config"]
+        store --> signals
+        ResearchContext --> signals
+        signals --> risk
+    end
+
+    subgraph Engine[Backtest Engine]
+        simulate["Daily Simulation Loop"]
+        costs["Execution & Cost Models"]
+        risk --> simulate
+        simulate --> costs
+        ResearchContext --> simulate
+    end
+
+    subgraph Results[Analytics & Reporting]
+        artefacts["Trades / NAV / Exposures"]
+        analytics["Metrics & Attribution"]
+        reports["HTML / Charts"]
+        costs --> artefacts
+        simulate --> artefacts
+        artefacts --> analytics --> reports
+    end
+
+    CLI["CLI & API"]
+    ResearchContext --> CLI
+    CLI --> ResearchContext
+    CLI --> simulate
+    CLI --> analytics
+```
+
 ## Data quality & QA utilities
 
 Phase 9 adds explicit QA helpers for market data edge cases:
